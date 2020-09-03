@@ -176,6 +176,8 @@ func (G *GoogleDriveClient) MoveFile(ptid string, dsid string){
 			G.DriveSrv = G.DriveServices[G.SA_INDEX]
 			G.MoveFile(file.Id, dsid)
 		}
+		log.Printf("Error occured while moving file %s\n", err)
+		return
 	}
 	log.Println("Moving the file done")
 }
