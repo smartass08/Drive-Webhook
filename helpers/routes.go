@@ -1,7 +1,6 @@
-package routes
+package helpers
 
 import (
-	"Webhook-Gdrive/types"
 	"log"
 	"net/http"
 )
@@ -9,10 +8,10 @@ import (
 func Receive(w http.ResponseWriter, r *http.Request){
 	log.Printf("New Webhook recieved")
 	log.Printf(r.RemoteAddr)
-	var reqData types.Request
+	var reqData Request
 	data := reqData.Unmarshal(r)
 	log.Println(data)
-	var call types.ErrorResponse
+	var call ErrorResponse
 	if reqData.Channel != "" {
 		call.Status = 200
 		call.Send(w)
